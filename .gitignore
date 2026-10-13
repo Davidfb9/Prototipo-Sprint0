@@ -1,0 +1,39 @@
+# ---------------------------------------------------------------
+#
+# Fichero:  .gitignore
+# Proyecto: Sprint 0 - PBTIO 3A
+# Autor:    David Ferra
+# Fecha:    2026-10-15
+#
+# Descripción: ficheros y carpetas que NO se suben al repositorio.
+#
+# ---------------------------------------------------------------
+
+# ---------------------------------------------------------------
+# Android / Gradle
+# ---------------------------------------------------------------
+src/android/.gradle/
+src/android/build/
+src/android/app/build/
+src/android/local.properties
+src/android/.idea/
+src/android/captures/
+src/android/*.iml
+src/android/gradle/wrapper/gradle-wrapper.jar
+
+# ---------------------------------------------------------------
+# Archivos de sistema
+# ---------------------------------------------------------------
+Thumbs.db
+.DS_Store
+._*
+
+# ---------------------------------------------------------------
+# IDE
+# ---------------------------------------------------------------
+.idea/
+
+# ---------------------------------------------------------------
+# El directorio de despliegue no va al repositorio
+# ---------------------------------------------------------------
+C:\xampp\htdocs\Prototipo/
