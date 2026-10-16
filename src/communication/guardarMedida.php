@@ -6,11 +6,14 @@
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10-15
+// Descripción: Ruta POST del servidor REST: recibe y almacena una medida.
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Anade la ruta REST sobre la logica de negocio.
 //
 // POST ../communication/guardarMedida.php
 //
-// cuerpo: (sensor:Texto, valor:Z, contador:N)
-// -> ( resultado: VoF ) | ( error: Texto )
+// cuerpo: (sensor:Text, valor:Z, contador:N)
+// --> ( resultado: B ) | ( error: Text )
 //
 // Recibe la medida que envía el teléfono Android y la delega en
 // la lógica del negocio. ESTE FICHERO NO VALIDA NADA: la

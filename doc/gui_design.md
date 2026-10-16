@@ -126,10 +126,9 @@ Se muestran según el sensor: `ppm` para `CO2` y `°C` para `TEMPERATURA`. La de
 
 ## 5.3. Reglas generales
 
-| Regla | Aplicación en este componente |
-|---|---|
-| **Lenguaje de programación** | **HTML5** y **CSS3** embebido. El comportamiento está en `frontend_business_logic/`, no aquí. |
-| **Cabeceras** | Comentario `Lógica fake del navegador` sobre el `script` que llama a la capa, y comentario `Esta parte sólo pinta` sobre el script de la pantalla. |
-| **Legibilidad** | Nombres de clase descriptivos (`pantalla`, `zonaValor`, `zonaDetalle`). Un solo `id` por elemento que se va a tocar desde JavaScript. |
-| **Pruebas automatizadas** | Se comprueba abriendo `http://localhost/Prototipo/src/gui/Aplicacion.html`. |
-| **Idempotencia** | La página sólo lee, nunca escribe. |
+* **Lenguaje de programación:** **HTML5** y **CSS3** embebido. El comportamiento está en `frontend_business_logic/`, no aquí.
+* **Cabeceras de fichero:** `Aplicacion.html` lleva cabecera con **nombre, descripción, copyright, fecha, autor y aportación** dentro de un comentario `<!-- -->`.
+* **Cabeceras de función:** este componente **no tiene funciones propias**. El comportamiento vive en `src/frontend_business_logic/`, donde cada función sí lleva su diseño lógico dentro de un bloque delimitado por líneas `--------------------`.
+* **Legibilidad:** nombres de clase descriptivos (`pantalla`, `zonaValor`, `zonaDetalle`). Un solo `id` por elemento que se va a tocar desde JavaScript.
+* **Pruebas automatizadas:** `test/test_ui.php` comprueba de forma estática que la página no contiene peticiones, ni SQL, ni PHP, y que llama a la lógica fake.
+* **Idempotencia:** la página sólo lee, nunca escribe.

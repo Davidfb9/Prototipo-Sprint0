@@ -5,6 +5,8 @@ package org.jordi.pruebarest1;
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Contrato que debe cumplir cualquier cliente REST del telefono.
 //
 // Descripción: contrato que debe cumplir cualquier cliente REST del teléfono.
 //
@@ -24,21 +26,21 @@ public interface ClienteREST {
     interface Respuesta {
 
         // el servidor ha devuelto 200 y un cuerpo correcto
-        // codigo:N cuerpo:Texto --> ok() -->
+        // codigo:N cuerpo:Text --> ok() -->
         void ok(String cuerpo);
 
         // el servidor ha devuelto un error (400, 404, 405, 500...)
-        // codigo:N cuerpo:Texto --> error() -->
+        // codigo:N cuerpo:Text --> error() -->
         void error(int codigo, String cuerpo);
     }
 
     // ------------------------------------------------------------------------------------
-    // sensor:Texto valor:Z contador:N cb:Funcion --> guardarMedida() --> void
+    // sensor:Text valor:Z contador:N cb:Funcion --> guardarMedida() --> void
     //
     // La firma de esta función es IDÉNTICA a la de la lógica de negocio del
     // servidor:
     //
-    //     sensor:Texto, valor:Z, contador:N -> guardarMedida() -> VoF
+    //     sensor:Text, valor:Z, contador:N --> guardarMedida() --> B
     //
     // Sólo cambia el tipo de la respuesta, porque aquí la respuesta llega de forma
     // asíncrona.

@@ -6,6 +6,8 @@
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10-15
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Pruebas automaticas del esquema y de las restricciones de la base de datos.
 //
 // Descripción: pruebas automatizadas de la base de datos.
 //
@@ -13,7 +15,7 @@
 //   que aunque la lógica de negocio fallara, la base de datos no
 //   dejaría guardar algo incorrecto.
 //
-//   Ejecución:  C:\xampp\php\php.exe tests\test_bd.php
+//   Ejecución:  C:\xampp\php\php.exe test\test_bd.php
 //   Salida:     0 si todas pasan, 1 si alguna falla.
 //
 // ----------------------------------------------------------------
@@ -31,7 +33,7 @@ function comprobar( $nombre, $condicion ) {
 }
 
 // ----------------------------------------------------------------
-// sql:Texto -> intentarEjecutar() -> VoF
+// sql:Text --> intentarEjecutar() --> B
 //   Devuelve true si la sentencia ha sido ACEPTADA por la BD.
 // ----------------------------------------------------------------
 function intentarEjecutar( $sql ) {
@@ -53,7 +55,7 @@ $conexion = obtenerConexion();
 
 if ( esErrorDeConexion( $conexion ) ) {
   echo PHP_EOL . "No se puede conectar con la base de datos bd_beacon." . PHP_EOL;
-  echo "¿Se ha ejecutado bd/crear_bd.sql?" . PHP_EOL . PHP_EOL;
+  echo "¿Se ha ejecutado src/database/crear_bd.sql?" . PHP_EOL . PHP_EOL;
   exit( 1 );
 }
 

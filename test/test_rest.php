@@ -6,12 +6,14 @@
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10-15
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Pruebas automaticas de la API REST, con peticiones curl reales.
 //
 // Descripción: pruebas automatizadas del servidor REST.
 //
 //   PRECONDICIÓN: XAMPP debe estar arrancado (Apache en el 80).
 //
-//   Ejecución:  C:\xampp\php\php.exe tests\test_rest.php
+//   Ejecución:  C:\xampp\php\php.exe test\test_rest.php
 //   Salida:     0 si todas pasan, 1 si alguna falla.
 //
 //   Se pegan peticiones HTTP REALES contra el servidor, igual que
@@ -39,7 +41,7 @@ function comprobar( $nombre, $condicion ) {
 }
 
 // ----------------------------------------------------------------
-// ruta:Texto, metodo:Texto, cuerpo:Texto -> hacerPeticion() -> (codigo:N, cuerpo:Texto)
+// ruta:Text, metodo:Text, cuerpo:Text --> hacerPeticion() --> (codigo:N, cuerpo:Text)
 // ----------------------------------------------------------------
 function hacerPeticion( $ruta, $metodo, $cuerpo = null ) {
 

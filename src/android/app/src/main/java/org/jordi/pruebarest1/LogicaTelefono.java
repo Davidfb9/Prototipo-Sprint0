@@ -10,13 +10,15 @@ import java.util.Map;
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Logica de negocio del telefono: decide que hacer con cada beacon.
 //
 // Descripción: lógica de negocio del teléfono.
 //
 //              Coordina el escáner de beacons y el cliente REST. Esta clase NO
 //              conoce ni Bluetooth LE ni HTTP: sólo trabaja con los contratos
 //              EscannerBeacon y ClienteREST, y con tipos de dominio
-//              (sensor:Texto, valor:Z, contador:N).
+//              (sensor:Text, valor:Z, contador:N).
 //
 //              Por eso funciona igual con los componentes reales o con los fakes.
 //
@@ -58,7 +60,7 @@ public class LogicaTelefono {
     // ------------------------------------------------------------------------------------
     // Estados del teléfono: el proceso de principio a fin.
     //
-    //     DETENIDO -> ESCANEANDO -> DETECTADO -> ENVIADO
+    //     DETENIDO --> ESCANEANDO --> DETECTADO --> ENVIADO
     //
     // ------------------------------------------------------------------------------------
     public enum Estado {
@@ -74,7 +76,7 @@ public class LogicaTelefono {
     // ------------------------------------------------------------------------------------
     public interface Observador {
 
-        // estado:Texto mensaje:Texto --> cambioDeEstado() -->
+        // estado:Text mensaje:Text --> cambioDeEstado() -->
         void cambioDeEstado(Estado estado, String mensaje);
     }
 
@@ -85,7 +87,7 @@ public class LogicaTelefono {
     private Estado elEstadoActual = Estado.DETENIDO;
 
     // ------------------------------------------------------------------------------------
-    // o:Texto e:Texto c:Texto --> LogicaTelefono() -->
+    // o:Text e:Text c:Text --> LogicaTelefono() -->
     // ------------------------------------------------------------------------------------
     public LogicaTelefono(Observador o, EscannerBeacon e, ClienteREST c) {
         this.elObservador = o;
@@ -94,14 +96,14 @@ public class LogicaTelefono {
     } // ()
 
     // ------------------------------------------------------------------------------------
-    // --> getEstadoActual() -> Estado
+    // --> getEstadoActual() --> Estado
     // ------------------------------------------------------------------------------------
     public Estado getEstadoActual() {
         return this.elEstadoActual;
     } // ()
 
     // ------------------------------------------------------------------------------------
-    // nombreBuscado:Texto --> buscarBeacon() --> void
+    // nombreBuscado:Text --> buscarBeacon() --> void
     // ------------------------------------------------------------------------------------
     public void buscarBeacon(String nombreBuscado) {
 
@@ -137,7 +139,7 @@ public class LogicaTelefono {
     } // ()
 
     // ------------------------------------------------------------------------------------
-    // nombre:Texto tipoDeMedicion:Z valor:Z contador:N --> enviarMedida() --> void
+    // nombre:Text tipoDeMedicion:Z valor:Z contador:N --> enviarMedida() --> void
     //
     // Traduce el identificador numérico que envía Arduino al nombre del sensor.
     //
@@ -191,7 +193,7 @@ public class LogicaTelefono {
     } // ()
 
     // ------------------------------------------------------------------------------------
-    // idDeMedicion:Z --> nombreDelSensor() -> Texto | null
+    // idDeMedicion:Z --> nombreDelSensor() --> Text | null
     // ------------------------------------------------------------------------------------
     private String nombreDelSensor(int idDeMedicion) {
 
@@ -207,12 +209,12 @@ public class LogicaTelefono {
     } // ()
 
     // ------------------------------------------------------------------------------------
-    // sensor:Texto valor:Z contador:N --> guardarMedida() --> void
+    // sensor:Text valor:Z contador:N --> guardarMedida() --> void
     //
     // IDENTIDAD DE FIRMAS. Esta cabecera es la MISMA que la de la lógica de
     // negocio del servidor:
     //
-    //     sensor:Texto, valor:Z, contador:N -> guardarMedida() -> VoF
+    //     sensor:Text, valor:Z, contador:N --> guardarMedida() --> B
     //
     // El cliente y el servidor, por tanto, hablan del mismo dominio.
     //
@@ -239,7 +241,7 @@ public class LogicaTelefono {
     } // ()
 
     // ------------------------------------------------------------------------------------
-    // estado:Texto mensaje:Texto --> cambiarEstado() --> void
+    // estado:Text mensaje:Text --> cambiarEstado() --> void
     // ------------------------------------------------------------------------------------
     private void cambiarEstado(Estado estado, String mensaje) {
 

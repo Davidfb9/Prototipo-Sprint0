@@ -7,6 +7,8 @@ import android.util.Log;
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Implementacion simulada del escaner, para pruebas sin hardware.
 //
 // Descripción: versión SIMULADA del contrato EscannerBeacon.
 //
@@ -28,7 +30,7 @@ public class EscannerBeaconFake implements EscannerBeacon {
     private static final int MEDICION_TEMPERATURA = 12;
 
     // ------------------------------------------------------------------------------------
-    // nombreBuscado:Texto cb:Deteccion --> empezarABuscar() --> void
+    // nombreBuscado:Text cb:Deteccion --> empezarABuscar() --> void
     // ------------------------------------------------------------------------------------
     @Override
     public void empezarABuscar(String nombreBuscado, Deteccion cb) {

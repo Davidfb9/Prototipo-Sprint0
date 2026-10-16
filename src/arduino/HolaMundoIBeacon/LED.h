@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------
+// 
+// Fichero:     LED.h
+// Descripción: Control del LED de la placa.
+// Copyright:   (c) 2019 Jordi Bataller i Mascarell
+// Fecha:       2026-10-15
+// Autor:       Jordi Bataller i Mascarell (codigo de partida)
+// Aportación:  Ninguna: se conserva tal cual del codigo de partida.
+// 
+// -----------------------------------------------------------------
+
 // -*- mode: c++ -*-
 
 #ifndef LED_H_INCLUIDO

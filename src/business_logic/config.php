@@ -6,6 +6,8 @@
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10-15
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Capa de persistencia: configuracion y conexion PDO con bd_beacon.
 // Descripción: configuración y conexión con la base de datos.
 //              Forma parte de la capa de persistencia descrita en
 //              doc/database_design.md.
@@ -14,7 +16,7 @@
 
 // ---------------------------------------------------------------
 //
-// -> obtenerConexion() -> PDO | error:Texto
+// --> obtenerConexion() --> PDO | error:Text
 //
 // Devuelve la conexión a la base de datos bd_beacon.
 //
@@ -47,7 +49,7 @@ function obtenerConexion() {
 
 // ---------------------------------------------------------------
 //
-// e:Texto -> esErrorDeConexion() -> VoF
+// e:Text --> esErrorDeConexion() --> B
 //
 // Comprueba si obtenerConexion() ha fallado.
 //

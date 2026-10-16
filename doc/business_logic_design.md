@@ -13,14 +13,14 @@ Esta parte será la encargada de decidir qué hacer con las medidas que recibe e
 
 **La lógica tiene que funcionar independientemente de cómo llegue la petición. Por eso no debe depender del servidor REST.**
 
-> Este fichero **no debe contener** ninguna referencia a HTTP, rutas, peticiones, respuestas, sockets, códigos 200, 302, 404, 500, ni a formatos de datos de la comunicación.
+> Este fichero **no debe contener** ninguna referencia al nivel de transporte: ni peticiones ni respuestas, ni códigos de estado del intercambio, ni direcciones a las que llegar, ni canales por donde circular, ni el formato en que viajan los datos.
 
 ### Operaciones
 
 #### Guardar una medida
 
 ```
-sensor:Texto, valor:Z, contador:N -> guardarMedida() -> VoF
+sensor:Text, valor:Z, contador:N --> guardarMedida() --> B
 ```
 
 La función recibirá una medida y determinará si se puede registrar.
@@ -31,7 +31,7 @@ La función recibirá una medida y determinará si se puede registrar.
 #### Recuperar la última medida
 
 ```
--> consultarUltimaMedida() -> (sensor:Texto, valor:Z, contador:N, fecha:Texto) | error:Texto
+--> consultarUltimaMedida() --> (sensor:Text, valor:Z, contador:N, fecha:Text) | error:Text
 ```
 
 Esta función buscará la medida más reciente.
@@ -42,31 +42,30 @@ Esta función buscará la medida más reciente.
 #### Funciones auxiliares
 
 ```
-s:Texto -> esSensorValido() -> VoF
-v:Z     -> valorEnRango() -> VoF
-c:N     -> contadorEnRango() -> VoF
--> contarMedidas() -> N
--> borrarTodasLasMedidas() -> VoF
+s:Text --> esSensorValido() --> B
+v:Z     --> valorEnRango() --> B
+c:N     --> contadorEnRango() --> B
+--> contarMedidas() --> N
+--> borrarTodasLasMedidas() --> B
 ```
 
 ### Diagrama de clases
 
-```
 +-------------------------------------------------------+
 |                    business_logic                     |
 +-------------------------------------------------------+
 |                                                       |
 |   guardarMedida()                                     |
-|      sensor:Texto, valor:Z, contador:N -> VoF         |
+|      sensor:Text, valor:Z, contador:N --> B           |
 |                                                       |
 |   consultarUltimaMedida()                             |
-|      -> (sensor, valor, contador, fecha) | error      |
+|      --> (sensor, valor, contador, fecha) | error     |
 |                                                       |
-|   esSensorValido()  s:Texto -> VoF                    |
-|   valorEnRango()    v:Z     -> VoF                    |
-|   contadorEnRango() c:N     -> VoF                    |
-|   contarMedidas()           -> N                      |
-|   borrarTodasLasMedidas()   -> VoF                    |
+|   esSensorValido()      s:Text --> B                  |
+|   valorEnRango()        v:Z    --> B                  |
+|   contadorEnRango()     c:N    --> B                  |
+|   contarMedidas()              --> N                  |
+|   borrarTodasLasMedidas()      --> B                  |
 |                                                       |
 +---------------------------+---------------------------+
                             |
@@ -75,7 +74,6 @@ c:N     -> contadorEnRango() -> VoF
 +-------------------------------------------------------+
 |           MEDIDAS  (ver database_design.md)           |
 +-------------------------------------------------------+
-```
 
 ---
 
@@ -101,7 +99,7 @@ Para que **el tipo de retorno indique el resultado**, sin necesidad de comprobar
 * Un **array** con la medida, si la hay.
 * Un **texto** de error, si no la hay.
 
-El llamador distingue los dos casos con `is_array()` o `is_string()`. No hace falta mirar ningún código de estado HTTP.
+El llamador distingue los dos casos con `is_array()` o `is_string()`. No hace falta mirar ningún código de estado del intercambio.
 
 ### ¿Por qué se comprueban los parámetros dos veces?
 
@@ -111,23 +109,22 @@ La primera en la lógica de negocio, para dar un mensaje claro. La segunda en la
 
 En `config.php`, que devuelve un objeto `PDO`. La lógica de negocio lo usa, pero **no sabe nada del servidor REST**. Podría reutilizarse igual desde un script de consola, un cron o un test.
 
-### Nada de HTTP
+### Nada del nivel de transporte
 
 En todo el fichero no aparecen:
 
-* rutas (`/communication/...`)
-* códigos de estado (`200`, `404`, `405`)
-* peticiones (`$_GET`, `$_POST`, `REQUEST_METHOD`)
-* formato de los datos (`json_encode`, cabeceras)
+* direcciones a las que llegar
+* códigos de estado del intercambio
+* variables superglobales de la petición
+* formato de serialización de los datos
 
 ---
 
 ## 2.3. Reglas generales
 
-| Regla | Aplicación en este componente |
-|---|---|
-| **Lenguaje de programación** | **PHP 8.2** (XAMPP). Acceso a datos con PDO. |
-| **Cabeceras** | Fichero `medidas.php` con cabecera completa. Cada función lleva su diseño lógico entre líneas `--------------------`, por ejemplo `sensor:Texto, valor:Z, contador:N -> guardarMedida() -> VoF`. |
-| **Legibilidad** | Una función por responsabilidad. Los límites del dominio están en constantes con nombre (`VALOR_MINIMO`, `VALOR_MAXIMO`), no en números sueltos. |
-| **Pruebas automatizadas** | `tests/test_logica_negocio.php` con 23 pruebas: validaciones, historial, tipos devueltos e idempotencia. |
-| **Idempotencia** | Cada prueba crea y borra sus propios datos. Al terminar, la tabla tiene el mismo número de filas que al empezar. |
+* **Lenguaje de programación:** **PHP 8.2** (XAMPP). Acceso a datos con PDO.
+* **Cabeceras de fichero:** el fichero `medidas.php` lleva cabecera con **nombre, descripción, copyright, fecha, autor y aportación**.
+* **Cabeceras de función:** cada función lleva su diseño lógico dentro de un bloque delimitado por líneas `--------------------`, por ejemplo `Text s --> esSensorValido() --> B`.
+* **Legibilidad:** una función por responsabilidad. Los límites del dominio están en constantes con nombre (`VALOR_MINIMO`, `VALOR_MAXIMO`), no en números sueltos.
+* **Pruebas automatizadas:** `test/test_logica_negocio.php` con 23 pruebas: validaciones, historial, tipos devueltos e idempotencia.
+* **Idempotencia:** cada prueba crea y borra sus propios datos. Al terminar, la tabla tiene el mismo número de filas que al empezar.

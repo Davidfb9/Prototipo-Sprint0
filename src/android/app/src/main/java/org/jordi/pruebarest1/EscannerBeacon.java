@@ -5,6 +5,8 @@ package org.jordi.pruebarest1;
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Contrato que debe cumplir cualquier buscador de beacons del telefono.
 //
 // Descripción: contrato que debe cumplir cualquier buscador de beacons del teléfono.
 //
@@ -22,16 +24,16 @@ public interface EscannerBeacon {
     interface Deteccion {
 
         // ya está anunciando el beacon buscado
-        // nombre:Texto tipoDeMedicion:N valor:Z contador:N --> beaconDetectado() -->
+        // nombre:Text tipoDeMedicion:N valor:Z contador:N --> beaconDetectado() -->
         void beaconDetectado(String nombre, int tipoDeMedicion, int valor, int contador);
 
         // algo ha ido mal (no hay Bluetooth, falta permiso...)
-        // mensaje:Texto --> error() -->
+        // mensaje:Text --> error() -->
         void error(String mensaje);
     }
 
     // ------------------------------------------------------------------------------------
-    // nombreBuscado:Texto cb:Deteccion --> empezarABuscar() --> void
+    // nombreBuscado:Text cb:Deteccion --> empezarABuscar() --> void
     // ------------------------------------------------------------------------------------
     void empezarABuscar(String nombreBuscado, Deteccion cb);
 

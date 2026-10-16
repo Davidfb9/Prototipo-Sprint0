@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------
+// 
+// Fichero:     ServicioEnEmisora.h
+// Descripción: Servicios y caracteristicas de la emisora BLE.
+// Copyright:   (c) 2019 Jordi Bataller i Mascarell
+// Fecha:       2026-10-15
+// Autor:       Jordi Bataller i Mascarell (codigo de partida)
+// Aportación:  Ninguna: se conserva tal cual del codigo de partida.
+// 
+// -----------------------------------------------------------------
+
 // -*- mode: c++ -*-
 
 // ----------------------------------------------------------
@@ -33,7 +44,7 @@ uint8_t * stringAUint8AlReves( const char * pString, uint8_t * pUint, int tamMax
 
 	int longitudString =  strlen( pString );
 	int longitudCopiar = ( longitudString > tamMax ? tamMax : longitudString );
-	// copio nombreServicio -> uuidServicio pero al revés
+	// copio nombreServicio --> uuidServicio pero al revés
 	for( int i=0; i<=longitudCopiar-1; i++ ) {
 	  pUint[ tamMax-i-1 ] = pString[ i ];
 	} // for

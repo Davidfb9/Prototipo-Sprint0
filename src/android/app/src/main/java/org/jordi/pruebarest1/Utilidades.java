@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------
+// 
+// Fichero:     Utilidades.java
+// Descripción: Utilidades de conversion de bytes, UUID y textos.
+// Copyright:   (c) 2026 David Ferra
+// Fecha:       2026-10-15
+// Autor:       Jordi Bataller i Mascarell (codigo de partida)
+// Aportación:  Se completaron las ayudas de conversion que necesita el escaneo.
+// 
+// -----------------------------------------------------------------
+
 package org.jordi.pruebarest1;
 
 

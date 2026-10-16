@@ -6,10 +6,12 @@
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10-15
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Pruebas automaticas de la logica de negocio.
 //
 // Descripción: pruebas automatizadas de la lógica de negocio.
 //
-//   Ejecución:  C:\xampp\php\php.exe tests\test_logica_negocio.php
+//   Ejecución:  C:\xampp\php\php.exe test\test_logica_negocio.php
 //   Salida:     0 si todas pasan, 1 si alguna falla.
 //
 //   INDEPENDIENTES: cada test crea y borra sus propios datos.
@@ -27,7 +29,7 @@ $contPruebas = 0;
 $contFallos = 0;
 
 // ----------------------------------------------------------------
-// nombre:Texto, condicion:VoF -> comprobar() -> void
+// nombre:Text, condicion:B --> comprobar() --> void
 // ----------------------------------------------------------------
 function comprobar( $nombre, $condicion ) {
   global $contPruebas, $contFallos;

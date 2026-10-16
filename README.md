@@ -33,10 +33,10 @@ Descargarlo de [apachefriends.org](https://www.apachefriends.org/) e instalarlo.
 Con `mysql`:
 
 ```
-C:\xampp\mysql\bin\mysql.exe -u root < bd\crear_bd.sql
+C:\xampp\mysql\bin\mysql.exe -u root < src/database/crear_bd.sql
 ```
 
-O bien desde **phpMyAdmin** (`http://localhost/phpmyadmin` → Importar → `bd\crear_bd.sql`).
+O bien desde **phpMyAdmin** (`http://localhost/phpmyadmin` → Importar → `src/database/crear_bd.sql`).
 
 ### 3. Copiar el proyecto en el servidor
 
@@ -80,21 +80,24 @@ Abrir `src\arduino\HolaMundoIBeacon\HolaMundoIBeacon.ino` en **Arduino IDE**, co
 **Requisito:** XAMPP arrancado (Apache y MariaDB).
 
 ```
-tests\ejecutar_tests.bat
+test\ejecutar_tests.bat
 ```
 
-Ejecuta los tres juegos de pruebas. Devuelve `0` si todo pasa y `1` si algo falla, por lo que sirve también en un proceso de integración continua.
+Ejecuta los cuatro juegos de pruebas. Devuelve `0` si todo pasa y `1` si algo falla, por lo que sirve también en un proceso de integración continua.
 
 | Fichero | Qué comprueba | Pruebas |
 |---|---|---|
-| `tests\test_bd.php` | Que la base de datos impone sus propias restricciones | 22 |
-| `tests\test_logica_negocio.php` | Las reglas de negocio de las medidas | 23 |
-| `tests\test_rest.php` | El servidor REST con peticiones HTTP reales | 17 |
+| `test\test_bd.php` | Que la base de datos impone sus propias restricciones | 22 |
+| `test\test_logica_negocio.php` | Las reglas de negocio de las medidas | 23 |
+| `test\test_rest.php` | El servidor REST con peticiones HTTP reales | 17 |
+| `test\test_ui.php` | Que la interfaz no se comunica por su cuenta y que la lógica del navegador tiene la misma firma que la del backend | 26 |
+
+El test de interfaz es **estático**: revisa el código de `src/gui/` y de `src/frontend_business_logic/` sin necesitar Apache, navegador ni base de datos, así que se puede ejecutar en cualquier momento.
 
 Se pueden ejecutar por separado:
 
 ```
-C:\xampp\php\php.exe tests\test_logica_negocio.php
+C:\xampp\php\php.exe test\test_logica_negocio.php
 ```
 
 **Todos los tests son independientes e idempotentes:** cada uno crea y borra sus propios datos, y al terminar la base de datos queda en el mismo estado que al empezar.
@@ -107,29 +110,29 @@ C:\xampp\php\php.exe tests\test_logica_negocio.php
 Prototipo/
 ├── author.md                  autor del proyecto
 ├── README.md                  este fichero
-├── PENDIENTES.md              lista de tareas
-├── bd/
-│   └── crear_bd.sql           esquema de la base de datos
-├── doc/
-│   ├── arduino_design.md
-│   ├── android_design.md
-│   ├── communication_design.md
-│   ├── business_logic_design.md
-│   ├── database_design.md
-│   ├── frontend_business_logic_design.md
-│   └── gui_design.md
 ├── src/
 │   ├── arduino/               C++ — emite el beacon
 │   ├── android/               Java — recibe y reenvía
 │   ├── communication/         PHP — servidor REST
 │   ├── business_logic/        PHP — reglas y base de datos
+│   ├── database/              SQL — esquema de la base de datos
 │   ├── frontend_business_logic/  JavaScript — lógica del navegador
 │   └── gui/                   HTML — página de resultados
-└── tests/
+├── doc/
+│   ├── android_design.md
+│   ├── arduino_design.md
+│   ├── communication_design.md
+│   ├── business_logic_design.md
+│   ├── database_design.md
+│   ├── frontend_business_logic_design.md
+│   ├── gui_design.md
+│   └── prompts.md
+└── test/
     ├── ejecutar_tests.bat
     ├── test_bd.php
     ├── test_logica_negocio.php
-    └── test_rest.php
+    ├── test_rest.php
+    └── test_ui.php
 ```
 
 Cada carpeta de `src/` tiene su diseño correspondiente en `doc/`, siguiendo la estructura de la asignatura.

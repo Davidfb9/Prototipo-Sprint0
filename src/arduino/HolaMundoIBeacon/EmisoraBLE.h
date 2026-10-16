@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------
+// 
+// Fichero:     EmisoraBLE.h
+// Descripción: Emisora BLE y publicacion de la trama iBeacon.
+// Copyright:   (c) 2026 David Ferra
+// Fecha:       2026-10-15
+// Autor:       Jordi Bataller i Mascarell (codigo de partida)
+// Aportación:  Se configuro el nombre GTI-David y la medida en major/minor.
+// 
+// -----------------------------------------------------------------
+
 // -*- mode: c++ -*-
 
 // ----------------------------------------------------------
@@ -104,7 +115,7 @@ public:
   }  // ()
   
   // .........................................................
-  // estaAnunciando() -> Boleano
+  // estaAnunciando() --> Boleano
   // .........................................................
   bool estaAnunciando() {
 	return Bluefruit.Advertising.isRunning();
@@ -182,7 +193,7 @@ public:
   //
   // 1. prefijo: 9bytes
   //       0x02, 0x01, 0x06,       // advFlags 3bytes
-  //       0x1a, 0xff,             // advHeader 2 (0x1a = 26 = 25(lenght de 0x4c a 0xca)+1)   0xFF -> BLE_GAP_AD_TYPE_MANUFACTURER_SPECIFIC_DATA
+  //       0x1a, 0xff,             // advHeader 2 (0x1a = 26 = 25(lenght de 0x4c a 0xca)+1)   0xFF --> BLE_GAP_AD_TYPE_MANUFACTURER_SPECIFIC_DATA
   //       0x4c, 0x00,             // companyID 2bytes
   //       0x02,                   // ibeacon type 1 byte
   //       0x15,                   // ibeacon length 1 byte (dec=21 lo que va a continuación: desde  la 'f' hasta 0x01)

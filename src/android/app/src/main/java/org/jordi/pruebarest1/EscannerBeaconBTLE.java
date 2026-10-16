@@ -20,6 +20,8 @@ import java.util.List;
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Implementacion real del escaneo BTLE, con filtrado por nombre de beacon.
 //
 // Descripción: implementación REAL del contrato EscannerBeacon.
 //
@@ -81,7 +83,7 @@ public class EscannerBeaconBTLE implements EscannerBeacon {
     private int descartesNoAvisados = 0;
 
     // ------------------------------------------------------------------------------------
-    // contexto:Texto elEscanner:Texto --> EscannerBeaconBTLE() -->
+    // contexto:Text elEscanner:Text --> EscannerBeaconBTLE() -->
     // ------------------------------------------------------------------------------------
     public EscannerBeaconBTLE(Context contexto, BluetoothLeScanner escanner) {
         this.elContexto = contexto;
@@ -89,7 +91,7 @@ public class EscannerBeaconBTLE implements EscannerBeacon {
     } // ()
 
     // ------------------------------------------------------------------------------------
-    // nombreBuscado:Texto cb:Deteccion --> empezarABuscar() --> void
+    // nombreBuscado:Text cb:Deteccion --> empezarABuscar() --> void
     // ------------------------------------------------------------------------------------
     @Override
     public void empezarABuscar(final String nombreBuscado, final Deteccion cb) {
@@ -185,7 +187,7 @@ public class EscannerBeaconBTLE implements EscannerBeacon {
     } // ()
 
     // ------------------------------------------------------------------------------------
-    // motivo:Texto --> avisarDescarte() --> void
+    // motivo:Text --> avisarDescarte() --> void
     //
     // Avisa de un descarte, pero sin saturar el logcat: máximo un aviso cada
     // INTERVALO_AVISO_MS. Lo que se suprime entre aviso y aviso se acumula en
@@ -214,7 +216,7 @@ public class EscannerBeaconBTLE implements EscannerBeacon {
     } // ()
 
     // ------------------------------------------------------------------------------------
-    // nombreBuscado:Texto resultado:ScanResult cb:Deteccion --> tratarResultado() --> void
+    // nombreBuscado:Text resultado:ScanResult cb:Deteccion --> tratarResultado() --> void
     // ------------------------------------------------------------------------------------
     private void tratarResultado(String nombreBuscado, ScanResult resultado, Deteccion cb) {
 

@@ -7,7 +7,7 @@
 -- Descripción: crea la base de datos bd_beacon y la tabla MEDIDAS,
 --              que guarda cada medida que envía la placa Arduino.
 --
--- Ejecución:  mysql -u root < bd/crear_bd.sql
+-- Ejecución:  mysql -u root < src/database/crear_bd.sql
 --             o bien desde phpMyAdmin -> Importar
 --
 -- ===============================================================

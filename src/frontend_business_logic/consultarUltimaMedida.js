@@ -4,6 +4,8 @@
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10-15
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Logica fake del navegador: invoca la API REST tras la misma firma que el backend.
 // Descripción: lógica fake del navegador.
 //
 //   ESTE FICHERO ES EL ÚNICO DEL NAVEGADOR QUE SABE QUE EXISTE EL
@@ -20,7 +22,7 @@
 
 // ----------------------------------------------------------------
 //
-// cb:Funcion -> consultarUltimaMedida() -> void
+// cb:Funcion --> consultarUltimaMedida() --> void
 //
 // Realiza un GET a la ruta REST y entrega el resultado al
 // callback. El callback recibe:

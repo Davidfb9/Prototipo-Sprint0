@@ -28,6 +28,8 @@ import java.util.Locale;
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Pantalla principal: permisos, interfaz y arranque del servicio de escaneo.
 //
 // Descripción: pantalla principal. SÓLO se ocupa de la parte visual y de arrancar
 //              el servicio. No contiene lógica de negocio.
@@ -121,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements LogicaTelefono.Ob
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // v:Texto --> botonBuscarNuestroDispositivoBTLEPulsado() -->
+    // v:Text --> botonBuscarNuestroDispositivoBTLEPulsado() -->
     //
     // Arranca el servicio de primer plano y se engancha a él.
     // ---------------------------------------------------------------------------------------
@@ -155,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements LogicaTelefono.Ob
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // v:Texto --> botonDetenerBusquedaDispositivosBTLEPulsado() -->
+    // v:Text --> botonDetenerBusquedaDispositivosBTLEPulsado() -->
     //
     // Pide al servicio que se detenga él solo. Mientras el servicio viva, el
     // escaneo sigue en segundo plano.
@@ -221,7 +223,7 @@ public class MainActivity extends AppCompatActivity implements LogicaTelefono.Ob
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // --> permisosQueFaltan() -> [Texto]
+    // --> permisosQueFaltan() --> [Text]
     //
     // Los permisos de Bluetooth cambian según la versión de Android:
     //
@@ -272,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements LogicaTelefono.Ob
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // --> estaLaLocalizacionEncendida() -> VoF
+    // --> estaLaLocalizacionEncendida() --> B
     //
     // Además del PERMISO de localización, el interruptor de localización del
     // teléfono (GPS) tiene que estar ENCENDIDO. Si está apagado, Android devuelve
@@ -297,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements LogicaTelefono.Ob
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // estado:Texto mensaje:Texto --> cambioDeEstado() --> void
+    // estado:Text mensaje:Text --> cambioDeEstado() --> void
     //
     // Es la única función que pinta. Recibe el estado que decide LogicaTelefono,
     // reenviado por el servicio.
@@ -315,7 +317,7 @@ public class MainActivity extends AppCompatActivity implements LogicaTelefono.Ob
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // requestCode:N permisos:[Texto] resultados:[N] --> onRequestPermissionsResult() -->
+    // requestCode:N permisos:[Text] resultados:[N] --> onRequestPermissionsResult() -->
     // ---------------------------------------------------------------------------------------
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,

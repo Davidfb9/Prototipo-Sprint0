@@ -7,6 +7,8 @@ import android.util.Log;
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Implementacion simulada del contrato ClienteREST, sin red.
 //
 // Descripción: versión SIMULADA del contrato ClienteREST.
 //
@@ -36,7 +38,7 @@ public class ClienteRESTFake implements ClienteREST {
     } // ()
 
     // ------------------------------------------------------------------------------------
-    // sensor:Texto valor:Z contador:N cb:Respuesta --> guardarMedida() --> void
+    // sensor:Text valor:Z contador:N cb:Respuesta --> guardarMedida() --> void
     // ------------------------------------------------------------------------------------
     @Override
     public void guardarMedida(String sensor, int valor, int contador, Respuesta cb) {

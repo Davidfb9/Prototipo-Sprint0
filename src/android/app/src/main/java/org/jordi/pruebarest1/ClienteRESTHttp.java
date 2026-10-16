@@ -7,6 +7,8 @@ import android.util.Log;
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Implementacion real del contrato ClienteREST sobre HTTP.
 //
 // Descripción: implementación REAL del contrato ClienteREST.
 //
@@ -21,7 +23,7 @@ public class ClienteRESTHttp implements ClienteREST {
     // ------------------------------------------------------------------------------------
     // ATENCION: esta es la única dirección que hay que cambiar entre ordenadores.
     //
-    //   1. Se mira la IP del ordenador:  ipconfig  ->  IPv4
+    //   1. Se mira la IP del ordenador:  ipconfig  -->  IPv4
     //   2. El puerto NO se pone: XAMPP escucha en el 80, que es el predeterminado
     //   3. Hay que añadir la ruta hasta src, porque el proyecto está desplegado
     //      dentro de htdocs/Prototipo
@@ -36,7 +38,7 @@ public class ClienteRESTHttp implements ClienteREST {
     private static final String ETIQUETA_LOG = ">>>>";
 
     // ------------------------------------------------------------------------------------
-    // sensor:Texto valor:Z contador:N cb:Respuesta --> guardarMedida() --> void
+    // sensor:Text valor:Z contador:N cb:Respuesta --> guardarMedida() --> void
     // ------------------------------------------------------------------------------------
     @Override
     public void guardarMedida(final String sensor, final int valor, final int contador,

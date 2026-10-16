@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------
+// 
+// Fichero:     Medidor.h
+// Descripción: Proporciona la medida ficticia del Sprint 0.
+// Copyright:   (c) 2019 Jordi Bataller i Mascarell
+// Fecha:       2026-10-15
+// Autor:       Jordi Bataller i Mascarell (codigo de partida)
+// Aportación:  medirCO2() devuelve 123 y medirTemperatura() devuelve -12.
+// 
+// -----------------------------------------------------------------
+
 // -*- mode: c++ -*-
 
 #ifndef MEDIDOR_H_INCLUIDO

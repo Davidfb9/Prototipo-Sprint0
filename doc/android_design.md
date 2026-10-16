@@ -130,8 +130,8 @@ La placa emite **tres** iBeacon con el mismo nombre `GTI-David`:
 La función de guardar medida del teléfono es la **misma** que la del servidor:
 
 ```
-TELÉFONO:  sensor:Texto, valor:Z, contador:N -> guardarMedida() -> VoF
-SERVIDOR:  sensor:Texto, valor:Z, contador:N -> guardarMedida() -> VoF
+TELÉFONO:  sensor:Text, valor:Z, contador:N --> guardarMedida() --> B
+SERVIDOR:  sensor:Text, valor:Z, contador:N --> guardarMedida() --> B
 ```
 
 Sólo cambia que en el teléfono la respuesta es asíncrona y llega por el observador.
@@ -256,12 +256,11 @@ De forma normal el logcat muestra un puñado de líneas cada 5 segundos, una por
 
 ## 7.3. Reglas generales
 
-| Regla | Aplicación en este componente |
-|---|---|
-| **Lenguaje de programación** | **Java 17**. Proyecto **Gradle** 9.6 / AGP 9.4.1 / AndroidX. Sin Kotlin. |
-| **Cabeceras** | Cabecera en todos los ficheros con fichero, proyecto, autor, fecha y descripción. Cada función lleva su diseño lógico entre líneas `--------------------`. |
-| **Legibilidad** | Una clase por responsabilidad. Interfaces con nombres de dominio (`EscannerBeacon`, `ClienteREST`). Nombres en castellano. |
-| **Segundo plano** | El escaneo vive en `ServicioEscaneoBeacon`, un **foreground service** con notificación permanente, declarado en el manifiesto con `foregroundServiceType="connectedDevice"`. |
-| **Permisos** | `BLUETOOTH_SCAN`/`BLUETOOTH_CONNECT` desde Android 12 y `BLUETOOTH`/`BLUETOOTH_ADMIN` antes. `ACCESS_FINE_LOCATION` **siempre**, porque no se usa `neverForLocation`. Sin `neverForLocation`. El GPS del teléfono debe estar encendido. |
-| **Pruebas automatizadas** | La comprobación automática del código Java es que **compile**: `gradlew assembleDebug`. Las pruebas de comportamiento se hacen con los fakes. |
-| **Idempotencia** | El teléfono no escribe directamente en la base de datos, sólo envía medidas al servidor, y nunca repite la misma medida. |
+* **Lenguaje de programación:** **Java 17**. Proyecto **Gradle** 9.6 / AGP 9.4.1 / AndroidX. Sin Kotlin.
+* **Cabeceras de fichero:** todos los ficheros llevan cabecera con **nombre, descripción, copyright, fecha, autor y aportación**.
+* **Cabeceras de función:** cada función lleva su diseño lógico dentro de un bloque delimitado por líneas `--------------------`, por ejemplo `Beacon b --> debeProcesarse() --> B`.
+* **Legibilidad:** una clase por responsabilidad. Interfaces con nombres de dominio (`EscannerBeacon`, `ClienteREST`). Nombres en castellano.
+* **Segundo plano:** el escaneo vive en `ServicioEscaneoBeacon`, un **foreground service** con notificación permanente, declarado en el manifiesto con `foregroundServiceType="connectedDevice"`.
+* **Permisos:** `BLUETOOTH_SCAN`/`BLUETOOTH_CONNECT` desde Android 12 y `BLUETOOTH`/`BLUETOOTH_ADMIN` antes. `ACCESS_FINE_LOCATION` **siempre**, porque no se usa `neverForLocation`. Sin `neverForLocation`. El GPS del teléfono debe estar encendido.
+* **Pruebas automatizadas:** la comprobación automática del código Java es que **compile**: `gradlew assembleDebug`. Las pruebas de comportamiento se hacen con los fakes.
+* **Idempotencia:** el teléfono no escribe directamente en la base de datos, sólo envía medidas al servidor, y nunca repite la misma medida.

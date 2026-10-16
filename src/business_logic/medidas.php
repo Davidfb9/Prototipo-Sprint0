@@ -6,6 +6,8 @@
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10-15
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Logica de negocio completa: validaciones, guardado y consulta de medidas.
 // Descripción: lógica de negocio de las medidas que envía la
 //              placa Arduino.
 //
@@ -24,7 +26,7 @@ require_once(__DIR__ . '/config.php');
 // Tipos del dominio
 //
 //   Sensor  = { CO2, TEMPERATURA }
-//   Medida  = ( sensor: Texto, valor: Z, contador: N, fecha: Texto )
+//   Medida  = ( sensor: Text, valor: Z, contador: N, fecha: Text )
 //
 // Límites del dominio (coinciden con las restricciones de la BD)
 // ---------------------------------------------------------------
@@ -42,7 +44,7 @@ define( 'ERROR_NO_HAY_MEDIDAS', 'no hay medidas guardadas' );
 
 // ---------------------------------------------------------------
 //
-// s:Texto -> esSensorValido() -> VoF
+// s:Text --> esSensorValido() --> B
 //
 // Comprueba que el nombre del sensor pertenece a Sensor.
 //
@@ -53,7 +55,7 @@ function esSensorValido( $s ) {
 
 // ---------------------------------------------------------------
 //
-// v:Z -> valorEnRango() -> VoF
+// v:Z --> valorEnRango() --> B
 //
 // ---------------------------------------------------------------
 function valorEnRango( $v ) {
@@ -62,7 +64,7 @@ function valorEnRango( $v ) {
 
 // ---------------------------------------------------------------
 //
-// c:N -> contadorEnRango() -> VoF
+// c:N --> contadorEnRango() --> B
 //
 // ---------------------------------------------------------------
 function contadorEnRango( $c ) {
@@ -71,7 +73,7 @@ function contadorEnRango( $c ) {
 
 // ---------------------------------------------------------------
 //
-// sensor:Texto, valor:Z, contador:N -> guardarMedida() -> VoF
+// sensor:Text, valor:Z, contador:N --> guardarMedida() --> B
 //
 // Almacena una medida como una fila NUEVA. No reutiliza filas
 // anteriores: se conserva el historial.
@@ -116,7 +118,7 @@ function guardarMedida( $sensor, $valor, $contador ) {
 
 // ---------------------------------------------------------------
 //
-// -> consultarUltimaMedida() -> (sensor:Texto, valor:Z, contador:N, fecha:Texto) | error:Texto
+// --> consultarUltimaMedida() --> (sensor:Text, valor:Z, contador:N, fecha:Text) | error:Text
 //
 // Recupera la medida más reciente: la fila de id más alto.
 //
@@ -154,7 +156,7 @@ function consultarUltimaMedida() {
 
 // ---------------------------------------------------------------
 //
-// -> contarMedidas() -> N
+// --> contarMedidas() --> N
 //
 // Número de medidas almacenadas. Útil para los tests.
 //
@@ -175,7 +177,7 @@ function contarMedidas() {
 
 // ---------------------------------------------------------------
 //
-// -> borrarTodasLasMedidas() -> VoF
+// --> borrarTodasLasMedidas() --> B
 //
 // Vacía la tabla. Lo usan los tests para que sean idempotentes:
 // al terminar, el estado debe ser el mismo que al empezar.

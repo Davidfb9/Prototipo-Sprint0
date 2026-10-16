@@ -37,7 +37,7 @@ El teléfono enviará un objeto JSON como:
 La ruta recogerá el valor y llamará a:
 
 ```
-sensor:Texto, valor:Z, contador:N -> guardarMedida() -> VoF
+sensor:Text, valor:Z, contador:N --> guardarMedida() --> B
 ```
 
 El resultado se transformará en una respuesta JSON.
@@ -51,7 +51,7 @@ GET ../communication/consultarUltimaMedida.php
 Esta ruta **no necesita recibir ningún parámetro**. Internamente utilizará:
 
 ```
--> consultarUltimaMedida() -> (sensor:Texto, valor:Z, contador:N, fecha:Texto) | error:Texto
+--> consultarUltimaMedida() --> (sensor:Text, valor:Z, contador:N, fecha:Text) | error:Text
 ```
 
 y devolverá el resultado al navegador.
@@ -147,10 +147,9 @@ Si el cuerpo está mal formado, `json_decode` devuelve `null`. Sin esa comprobac
 
 ## 3.3. Reglas generales
 
-| Regla | Aplicación en este componente |
-|---|---|
-| **Lenguaje de programación** | **PHP 8.2** sobre **Apache** (XAMPP). |
-| **Cabeceras** | Cada fichero REST lleva cabecera con fichero, proyecto, autor, fecha, método, cuerpo, respuestas y un ejemplo de `curl`. |
-| **Legibilidad** | Sólo se distinguen los códigos `200`, `400` y `405`. Un fichero por ruta. |
-| **Pruebas automatizadas** | `tests/test_rest.php` con 17 pruebas: pega peticiones HTTP reales con `curl` y comprueba códigos y cuerpos. |
-| **Idempotencia** | El test borra todas las medidas al terminar, por lo que puede ejecutarse cuantas veces se quiera. |
+* **Lenguaje de programación:** **PHP 8.2** sobre **Apache** (XAMPP).
+* **Cabeceras de fichero:** cada fichero REST lleva cabecera con **nombre, descripción, copyright, fecha, autor y aportación**, además del método, el cuerpo, las respuestas y un ejemplo de `curl`.
+* **Cabeceras de función:** cada función lleva su diseño lógico dentro de un bloque delimitado por líneas `--------------------`, por ejemplo `Text cuerpo --> guardarMedidaDesdeJson() --> B`.
+* **Legibilidad:** sólo se distinguen los códigos `200`, `400` y `405`. Un fichero por ruta.
+* **Pruebas automatizadas:** `test/test_rest.php` con 17 pruebas: pega peticiones HTTP reales con `curl` y comprueba códigos y cuerpos.
+* **Idempotencia:** el test borra todas las medidas al terminar, por lo que puede ejecutarse cuantas veces se quiera.

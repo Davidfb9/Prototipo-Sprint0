@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------
+// 
+// Fichero:     TramaIBeacon.java
+// Descripción: Decodificacion de la trama iBeacon recibida.
+// Copyright:   (c) 2026 David Ferra
+// Fecha:       2026-10-15
+// Autor:       Jordi Bataller i Mascarell (codigo de partida)
+// Aportación:  Se anadio el uso del nombre del beacon en el filtrado.
+// 
+// -----------------------------------------------------------------
+
 package org.jordi.pruebarest1;
 
 import java.util.Arrays;

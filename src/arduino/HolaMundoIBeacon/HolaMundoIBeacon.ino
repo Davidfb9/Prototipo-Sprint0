@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------
+// 
+// Fichero:     HolaMundoIBeacon.ino
+// Descripción: Sketch principal de la placa: ordena el arranque y la emision.
+// Copyright:   (c) 2019 Jordi Bataller i Mascarell
+// Fecha:       2026-10-15
+// Autor:       Jordi Bataller i Mascarell (codigo de partida)
+// Aportación:  Ninguna: se conserva tal cual del codigo de partida.
+// 
+// -----------------------------------------------------------------
+
 // -*-c++-*-
 
 // --------------------------------------------------------------

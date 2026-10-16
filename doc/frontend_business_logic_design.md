@@ -18,7 +18,7 @@ Esta capa será la encargada de comunicarse con el servidor REST. **La interfaz 
 La función principal será:
 
 ```
-cb:Funcion -> consultarUltimaMedida() -> void
+cb:Funcion --> consultarUltimaMedida() --> void
 ```
 
 La función realizará un `GET` a:
@@ -92,8 +92,8 @@ Esto permite dos cosas:
 2. **Identidad de firmas.** La función `consultarUltimaMedida()` del navegador es la misma que la del servidor:
 
    ```
-   cliente:   cb:Funcion -> consultarUltimaMedida() -> void
-   servidor:  -> consultarUltimaMedida() -> (sensor, valor, contador, fecha) | error
+   cliente:   cb:Funcion --> consultarUltimaMedida() --> void
+   servidor:  --> consultarUltimaMedida() --> (sensor, valor, contador, fecha) | error
    ```
 
    Se llaman igual y trabajan con el mismo dominio. Lo único que cambia es que en el cliente la respuesta llega de forma asíncrona.
@@ -115,6 +115,8 @@ De esta forma la pantalla no tiene que interpretar códigos de estado.
 
 **Sólo pinta.** La función `refrescar()` de `Aplicacion.html` llama a `consultarUltimaMedida()` y escribe el resultado en el DOM. No hace peticiones, no parsea JSON, no decide nada.
 
+`refrescar()` **no es una función de la lógica de negocio del navegador**: pertenece a la interfaz gráfica y sólo existe en `src/gui/Aplicacion.html`. Por eso **no tiene contrapartida en el backend**, y no rompe la regla de identidad de firmas. La única función que esta capa expone es `consultarUltimaMedida()`, que sí tiene su gemela exacta en `src/business_logic/medidas.php`.
+
 ### Actualización automática
 
 La página se refresca sola cada 3 segundos, así que basta con tenerla abierta para ver aparecer las medidas que llegan del teléfono.
@@ -123,10 +125,9 @@ La página se refresca sola cada 3 segundos, así que basta con tenerla abierta 
 
 ## 4.3. Reglas generales
 
-| Regla | Aplicación en este componente |
-|---|---|
-| **Lenguaje de programación** | **JavaScript** (ES5, sin dependencias externas). |
-| **Cabeceras** | Fichero `consultarUltimaMedida.js` con cabecera completa y cabecera de la función entre líneas `--------------------`. |
-| **Legibilidad** | El callback tiene una firma clara (`cb(error, resultado)`) y los pasos van numerados en comentarios. Un solo fichero por operación. |
-| **Pruebas automatizadas** | Se comprueba manualmente abriendo la página y viendo que refleja lo que hay en la base de datos. Para automatizarlo haría falta un runner de JS (Mocha), que queda fuera del alcance del Sprint 0. |
-| **Idempotencia** | Esta capa no escribe en la base de datos, sólo lee, por lo que no altera el estado. |
+* **Lenguaje de programación:** **JavaScript** (ES5, sin dependencias externas).
+* **Cabeceras de fichero:** el fichero `consultarUltimaMedida.js` lleva cabecera con **nombre, descripción, copyright, fecha, autor y aportación**.
+* **Cabeceras de función:** cada función lleva su diseño lógico dentro de un bloque delimitado por líneas `--------------------`, por ejemplo `cb:Funcion --> consultarUltimaMedida() --> void`.
+* **Legibilidad:** el callback tiene una firma clara (`cb(error, resultado)`) y los pasos van numerados en comentarios. Un solo fichero por operación.
+* **Pruebas automatizadas:** `test/test_ui.php` comprueba de forma estática que esta capa define `consultarUltimaMedida`, que encapsula la única petición del navegador y que no toca el DOM.
+* **Idempotencia:** esta capa no escribe en la base de datos, sólo lee, por lo que no altera el estado.

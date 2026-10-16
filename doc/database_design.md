@@ -1,6 +1,6 @@
 # 1. Diseño de la base de datos
 
-**Componente:** `src/business_logic/` (capa de persistencia) · `bd/crear_bd.sql`
+**Componente:** `src/business_logic/` (capa de persistencia) · `src/database/crear_bd.sql`
 **Autor:** David Ferra · **Fecha:** 2026-10-15
 
 ---
@@ -40,7 +40,7 @@ CONSTRAINTS:
 
 ```
 Sensor  = { CO2, TEMPERATURA }
-Medida  = ( sensor: Texto, valor: Z, contador: N, fecha: Texto )
+Medida  = ( sensor: Text, valor: Z, contador: N, fecha: Text )
 ```
 
 `id` es la clave primaria y se incrementa automáticamente.
@@ -111,10 +111,9 @@ Se usa `DATETIME` y lo rellena la propia base de datos con `CURRENT_TIMESTAMP`. 
 
 ## 1.3. Reglas generales
 
-| Regla | Aplicación en este componente |
-|---|---|
-| **Lenguaje de programación** | **SQL** (MariaDB 10.4) y **PHP 8.2** para la capa de acceso (`PDO`). |
-| **Cabeceras** | El fichero `bd/crear_bd.sql` lleva cabecera con fichero, proyecto, autor, fecha y descripción. Las funciones PHP de acceso (`config.php`) llevan el diseño lógico entre líneas `--------------------`. |
-| **Legibilidad** | Los nombres describen el dominio (`MEDIDAS`, `sensor`, `contador`). Los nombres técnicos como `ck_valor_rango` se escriben en minúscula y con guiones bajos. |
-| **Pruebas automatizadas** | `tests/test_bd.php` comprueba que la tabla tiene sus columnas, que el `id` es autoincremental y que **la base de datos rechaza por sí sola** los sensores desconocidos, los valores fuera de rango y los contadores fuera de rango. Se ejecuta con `tests/ejecutar_tests.bat`. |
-| **Idempotencia** | Cada prueba **borra las filas que crea**. Al terminar, la tabla queda vacía, igual que al empezar. |
+* **Lenguaje de programación:** **SQL** (MariaDB 10.4) y **PHP 8.2** para la capa de acceso (`PDO`).
+* **Cabeceras de fichero:** el fichero `src/database/crear_bd.sql` lleva cabecera con **nombre, descripción, copyright, fecha, autor y aportación**.
+* **Cabeceras de función:** las funciones PHP de acceso (`config.php`) llevan su diseño lógico dentro de un bloque delimitado por líneas `--------------------`.
+* **Legibilidad:** los nombres describen el dominio (`MEDIDAS`, `sensor`, `contador`). Los nombres técnicos como `ck_valor_rango` se escriben en minúscula y con guiones bajos.
+* **Pruebas automatizadas:** `test/test_bd.php` comprueba que la tabla tiene sus columnas, que el `id` es autoincremental y que **la base de datos rechaza por sí sola** los sensores desconocidos, los valores fuera de rango y los contadores fuera de rango. Se ejecuta con `test/ejecutar_tests.bat`.
+* **Idempotencia:** cada prueba **borra las filas que crea**. Al terminar, la tabla queda vacía, igual que al empezar.

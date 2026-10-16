@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------
+// 
+// Fichero:     PeticionarioREST.java
+// Descripción: Cliente HTTP generico basado en AsyncTask.
+// Copyright:   (c) 2026 David Ferra
+// Fecha:       2026-10-15
+// Autor:       David Ferra
+// Aportación:  Se adapto para enviar las medidas al servidor REST del proyecto.
+// 
+// -----------------------------------------------------------------
+
 package org.jordi.pruebarest1;
 
 import java.io.BufferedReader;

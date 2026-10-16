@@ -6,11 +6,14 @@
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10-15
+// Descripción: Ruta GET del servidor REST: devuelve la ultima medida almacenada.
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Anade la ruta REST sobre la logica de negocio.
 //
 // GET ../communication/consultarUltimaMedida.php
 //
-// -> ( sensor:Texto, valor:Z, contador:N, fecha:Texto )
-//  | ( error: Texto )
+// --> ( sensor:Text, valor:Z, contador:N, fecha:Text )
+//  | ( error: Text )
 //
 // Devuelve al navegador la última medida almacenada. No recibe
 // parámetros.

@@ -21,6 +21,8 @@ import androidx.core.app.ServiceCompat;
 // Proyecto: Sprint 0 - PBTIO 3A
 // Autor:    David Ferra
 // Fecha:    2026-10
+// Copyright:   (c) 2026 David Ferra
+// Aportación:  Servicio de primer plano que mantiene vivo el escaneo BTLE.
 //
 // Descripción: SERVICIO DE PRIMER PLANO (foreground service).
 //
@@ -89,7 +91,7 @@ public class ServicioEscaneoBeacon extends Service implements LogicaTelefono.Obs
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // intent:Texto flags:N startId:N --> onStartCommand() --> N
+    // intent:Text flags:N startId:N --> onStartCommand() --> N
     //
     // Se ejecuta cada vez que alguien llama a startService()/startForegroundService().
     // ---------------------------------------------------------------------------------------
@@ -135,7 +137,7 @@ public class ServicioEscaneoBeacon extends Service implements LogicaTelefono.Obs
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // --> onUnbind() --> VoF
+    // --> onUnbind() --> B
     //
     // La actividad se ha ido (por ejemplo, han cerrado la app). El escaneo SIGUE,
     // que es justo para lo que está el servicio.
@@ -191,7 +193,7 @@ public class ServicioEscaneoBeacon extends Service implements LogicaTelefono.Obs
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // --> estaEscaneando() --> VoF
+    // --> estaEscaneando() --> B
     // ---------------------------------------------------------------------------------------
     public boolean estaEscaneando() {
         return this.laLogica != null
@@ -199,7 +201,7 @@ public class ServicioEscaneoBeacon extends Service implements LogicaTelefono.Obs
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // o:Texto --> setObservador() --> void
+    // o:Text --> setObservador() --> void
     //
     // La actividad se registra para recibir los cambios de estado.
     // ---------------------------------------------------------------------------------------
@@ -208,7 +210,7 @@ public class ServicioEscaneoBeacon extends Service implements LogicaTelefono.Obs
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // estado:Texto mensaje:Texto --> cambioDeEstado() --> void
+    // estado:Text mensaje:Text --> cambioDeEstado() --> void
     //
     // Implementación del contrato Observador. El servicio reparte el estado a la
     // notificación y a la actividad, si está enganchada.
@@ -252,7 +254,7 @@ public class ServicioEscaneoBeacon extends Service implements LogicaTelefono.Obs
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // texto:Texto --> empezarComoServicioDePrimerPlano() -->
+    // texto:Text --> empezarComoServicioDePrimerPlano() -->
     //
     // Hay que llamar a startForeground() muy pronto tras onStartCommand(), si no
     // Android lanza una excepción y mata la app.
@@ -275,7 +277,7 @@ public class ServicioEscaneoBeacon extends Service implements LogicaTelefono.Obs
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // texto:Texto --> actualizarNotificacion() -->
+    // texto:Text --> actualizarNotificacion() -->
     // ---------------------------------------------------------------------------------------
     private void actualizarNotificacion(String texto) {
 
@@ -287,7 +289,7 @@ public class ServicioEscaneoBeacon extends Service implements LogicaTelefono.Obs
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // texto:Texto --> construirNotificacion() -> Notification
+    // texto:Text --> construirNotificacion() --> Notification
     // ---------------------------------------------------------------------------------------
     private Notification construirNotificacion(String texto) {
 
@@ -314,7 +316,7 @@ public class ServicioEscaneoBeacon extends Service implements LogicaTelefono.Obs
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // --> crearEscanner() -> EscannerBeacon
+    // --> crearEscanner() --> EscannerBeacon
     // ---------------------------------------------------------------------------------------
     private EscannerBeacon crearEscanner() {
 
@@ -335,7 +337,7 @@ public class ServicioEscaneoBeacon extends Service implements LogicaTelefono.Obs
     } // ()
 
     // ---------------------------------------------------------------------------------------
-    // --> crearClienteREST() -> ClienteREST
+    // --> crearClienteREST() --> ClienteREST
     // ---------------------------------------------------------------------------------------
     private ClienteREST crearClienteREST() {
         return new ClienteRESTHttp();

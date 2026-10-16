@@ -16,7 +16,7 @@ La placa debe tomar una medida con su sensor y **anunciarla mediante un Beacon B
 El Sprint 0 pide probar la cadena completa **sin depender de sensores reales**. Por eso `Medidor.h` devuelve un valor inventado y fijo:
 
 ```
-Medidor :: medirCO2() -> 123
+Medidor :: medirCO2() --> 123
 ```
 
 Este **123** es la medida que debe recorrer toda la cadena hasta aparecer en la página web. En los avances posteriores se sustituirá por la lectura real del sensor, sin tocar nada más.
@@ -142,10 +142,9 @@ El diseño de este componente se ha obtenido **por ingeniería inversa** del có
 
 ## 6.3. Reglas generales
 
-| Regla | Aplicación en este componente |
-|---|---|
-| **Lenguaje de programación** | **C++** (Arduino / Adafruit nRF52). |
-| **Cabeceras** | Cabecera en `HolaMundoIBeacon.ino`. Cada cabecera de clase lleva su diseño lógico entre líneas `--------------------`. |
-| **Legibilidad** | Una clase por responsabilidad. Nombres en castellano (`Medidor`, `Publicador`, `EmisoraBLE`). |
-| **Pruebas automatizadas** | No hay tests automáticos para la placa. La comprobación es visual: encender la placa y ver por el puerto serie que anuncia `GTI-David`. |
-| **Idempotencia** | Cada `loop()` genera una medida y la publica, sin dejar estado acumulado. |
+* **Lenguaje de programación:** **C++** (Arduino / Adafruit nRF52).
+* **Cabeceras de fichero:** todos los ficheros del boceto (`HolaMundoIBeacon.ino` y los `.h`) llevan cabecera con **nombre, descripción, copyright, fecha, autor y aportación**.
+* **Cabeceras de función:** cada cabecera de clase lleva su diseño lógico dentro de un bloque delimitado por líneas `--------------------`.
+* **Legibilidad:** una clase por responsabilidad. Nombres en castellano (`Medidor`, `Publicador`, `EmisoraBLE`).
+* **Pruebas automatizadas:** no hay tests automáticos para la placa. La comprobación es visual: encender la placa y ver por el puerto serie que anuncia `GTI-David`. La medida ficticia es la que recoge el test de funcionamiento de la rúbrica.
+* **Idempotencia:** cada `loop()` genera una medida y la publica, sin dejar estado acumulado.

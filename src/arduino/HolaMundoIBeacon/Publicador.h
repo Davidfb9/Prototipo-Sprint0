@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------
+// 
+// Fichero:     Publicador.h
+// Descripción: Monta y publica el paquete del beacon.
+// Copyright:   (c) 2026 David Ferra
+// Fecha:       2026-10-15
+// Autor:       Jordi Bataller i Mascarell (codigo de partida)
+// Aportación:  Se ajusto para publicar la medida ficticia.
+// 
+// -----------------------------------------------------------------
+
 // -*- mode: c++ -*-
 
 // --------------------------------------------------------------
