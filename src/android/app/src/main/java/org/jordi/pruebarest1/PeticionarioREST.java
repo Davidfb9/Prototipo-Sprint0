@@ -23,10 +23,16 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 // ------------------------------------------------------------------------
+// Clase: cliente HTTP genérico basado en AsyncTask.
+//
+// Ejecuta cada petición en un hilo aparte para no bloquear la interfaz
+// y entrega el resultado por la interfaz RespuestaREST.
 // ------------------------------------------------------------------------
 public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
 
     // --------------------------------------------------------------------
+// Estado de la petición en curso: método, destino, cuerpo
+// y la interfaz que recibirá la respuesta.
     // --------------------------------------------------------------------
     private String elMetodo;
     private String urlDestino;
@@ -36,12 +42,21 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
     private String cuerpoRespuesta = "";
 
     // --------------------------------------------------------------------
+// --> PeticionarioREST() --> void
+//
+// Crea el cliente sin parámetros. Lo demás se fija en cada petición
+// con hacerPeticionREST().
     // --------------------------------------------------------------------
     public PeticionarioREST() {
         Log.d("clienterestandroid", "constructor()");
     }
 
     // --------------------------------------------------------------------
+// método:Text, urlDestino:Text, cuerpo:Text, laRespuesta:Callback
+//   --> hacerPeticionREST() --> void
+//
+// Guarda los datos de la petición y la lanza en un hilo aparte.
+// El resultado llega a laRespuesta.callback(código, cuerpo).
     // --------------------------------------------------------------------
     public void hacerPeticionREST(String metodo, String urlDestino, String cuerpo, RespuestaREST laRespuesta) {
         this.elMetodo = metodo;
@@ -53,6 +68,10 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
     }
 
     // --------------------------------------------------------------------
+// parámetros:Z[] --> doInBackground() --> B
+//
+// Abre la conexión, escribe la petición y lee la respuesta.
+// Devuelve true si la petición ha terminado bien.
     // --------------------------------------------------------------------
     @Override
     protected Boolean doInBackground(Void... params) {
@@ -132,6 +151,10 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
     } // ()
 
     // --------------------------------------------------------------------
+// comoFue:B --> onPostExecute() --> void
+//
+// Se ejecuta al terminar doInBackground() y devuelve el código
+// y el cuerpo de la respuesta a la interfaz RespuestaREST.
     // --------------------------------------------------------------------
     protected void onPostExecute(Boolean comoFue) {
         // llamado tras doInBackground()
@@ -140,6 +163,9 @@ public class PeticionarioREST extends AsyncTask<Void, Void, Boolean> {
     }
 
     // --------------------------------------------------------------------
+// Interfaz de devolución de la petición REST.
+//
+// código:N, cuerpo:Text --> callback() --> void
     // --------------------------------------------------------------------
     public interface RespuestaREST {
         void callback(int codigo, String cuerpo);

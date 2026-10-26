@@ -32,66 +32,99 @@ public class TramaIBeacon {
     private byte iBeaconLength = 0 ; // 1 byte
 
     // -------------------------------------------------------------------------------
+// --> getPrefijo() --> byte[]
+//
+// Devuelve el prefijo fijo de la trama iBeacon.
     // -------------------------------------------------------------------------------
     public byte[] getPrefijo() {
         return prefijo;
     }
 
     // -------------------------------------------------------------------------------
+// --> getUUID() --> byte[]
+//
+// Devuelve el UUID de 16 bytes del beacon.
     // -------------------------------------------------------------------------------
     public byte[] getUUID() {
         return uuid;
     }
 
     // -------------------------------------------------------------------------------
+// --> getMajor() --> byte[]
+//
+// Devuelve el campo major: identifica el grupo del beacon.
     // -------------------------------------------------------------------------------
     public byte[] getMajor() {
         return major;
     }
 
     // -------------------------------------------------------------------------------
+// --> getMinor() --> byte[]
+//
+// Devuelve el campo minor: identifica el beacon dentro del grupo.
     // -------------------------------------------------------------------------------
     public byte[] getMinor() {
         return minor;
     }
 
     // -------------------------------------------------------------------------------
+// --> getTxPower() --> byte
+//
+// Devuelve la potencia de calibración a un metro (Tx Power).
     // -------------------------------------------------------------------------------
     public byte getTxPower() {
         return txPower;
     }
 
     // -------------------------------------------------------------------------------
+// --> getLosBytes() --> byte[]
+//
+// Devuelve la trama completa tal y como ha llegado.
     // -------------------------------------------------------------------------------
     public byte[] getLosBytes() {
         return losBytes;
     }
 
     // -------------------------------------------------------------------------------
+// --> getAdvFlags() --> byte[]
+//
+// Devuelve los flags del paquete de publicidad BLE.
     // -------------------------------------------------------------------------------
     public byte[] getAdvFlags() {
         return advFlags;
     }
 
     // -------------------------------------------------------------------------------
+// --> getAdvHeader() --> byte[]
+//
+// Devuelve la cabecera del paquete de publicidad BLE.
     // -------------------------------------------------------------------------------
     public byte[] getAdvHeader() {
         return advHeader;
     }
 
     // -------------------------------------------------------------------------------
+// --> getCompanyID() --> byte[]
+//
+// Devuelve el identificador de empresa de Bluetooth SIG.
     // -------------------------------------------------------------------------------
     public byte[] getCompanyID() {
         return companyID;
     }
 
     // -------------------------------------------------------------------------------
+// --> getiBeaconType() --> byte
+//
+// Devuelve el tipo de beacon; fijo en 0x02.
     // -------------------------------------------------------------------------------
     public byte getiBeaconType() {
         return iBeaconType;
     }
 
     // -------------------------------------------------------------------------------
+// --> getiBeaconLength() --> byte
+//
+// Devuelve la longitud de la parte iBeacon; fijo en 21.
     // -------------------------------------------------------------------------------
     public byte getiBeaconLength() {
         return iBeaconLength;
@@ -136,6 +169,9 @@ public class TramaIBeacon {
     }
 
     // -------------------------------------------------------------------------------
+// bytes:byte[] --> TramaIBeacon() --> void
+//
+// Guarda la trama recibida y la decodifica en los campos del iBeacon.
     // -------------------------------------------------------------------------------
     public TramaIBeacon(byte[] bytes ) {
         this.losBytes = bytes;
@@ -155,7 +191,6 @@ public class TramaIBeacon {
     } // ()
 } // class
 // -----------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------
+// Fin del fichero: TramaIBeacon.java
 // -----------------------------------------------------------------------------------
 

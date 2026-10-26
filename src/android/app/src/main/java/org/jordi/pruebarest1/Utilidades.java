@@ -22,6 +22,9 @@ import java.util.UUID;
 public class Utilidades {
 
     // -------------------------------------------------------------------------------
+// texto:Text --> stringToBytes() --> byte[]
+//
+// Convierte un texto en su representación de bytes.
     // -------------------------------------------------------------------------------
     public static byte[] stringToBytes ( String texto ) {
         return texto.getBytes();
@@ -29,6 +32,10 @@ public class Utilidades {
     } // ()
 
     // -------------------------------------------------------------------------------
+// uuid:Text --> stringToUUID() --> UUID
+//
+// Convierte un texto de 16 caracteres en un UUID.
+// Si no tiene 16 caracteres lanza un Error.
     // -------------------------------------------------------------------------------
     public static UUID stringToUUID( String uuid ) {
         if ( uuid.length() != 16 ) {
@@ -48,18 +55,27 @@ public class Utilidades {
     } // ()
 
     // -------------------------------------------------------------------------------
+// uuid:UUID --> uuidToString() --> Text
+//
+// Convierte un UUID en su texto de 16 caracteres.
     // -------------------------------------------------------------------------------
     public static String uuidToString ( UUID uuid ) {
         return bytesToString( dosLongToBytes( uuid.getMostSignificantBits(), uuid.getLeastSignificantBits() ) );
     } // ()
 
     // -------------------------------------------------------------------------------
+// uuid:UUID --> uuidToHexString() --> Text
+//
+// Convierte un UUID en texto hexadecimal legible.
     // -------------------------------------------------------------------------------
     public static String uuidToHexString ( UUID uuid ) {
         return bytesToHexString( dosLongToBytes( uuid.getMostSignificantBits(), uuid.getLeastSignificantBits() ) );
     } // ()
 
     // -------------------------------------------------------------------------------
+// bytes:byte[] --> bytesToString() --> Text
+//
+// Convierte bytes en texto; los nulos se ignoran.
     // -------------------------------------------------------------------------------
     public static String bytesToString( byte[] bytes ) {
         if (bytes == null ) {
@@ -74,6 +90,9 @@ public class Utilidades {
     }
 
     // -------------------------------------------------------------------------------
+// masSignificativos:Z, menosSignificativos:Z --> dosLongToBytes() --> byte[]
+//
+// Junta dos long de 8 bytes en un solo bloque de 16 bytes.
     // -------------------------------------------------------------------------------
     public static byte[] dosLongToBytes( long masSignificativos, long menosSignificativos ) {
         ByteBuffer buffer = ByteBuffer.allocate( 2 * Long.BYTES );
@@ -107,12 +126,18 @@ public class Utilidades {
     }
 
     // -------------------------------------------------------------------------------
+// bytes:byte[] --> bytesToLong() --> Z
+//
+// Interpreta bytes como un long con signo.
     // -------------------------------------------------------------------------------
     public static long bytesToLong( byte[] bytes ) {
         return new BigInteger(bytes).longValue();
     }
 
     // -------------------------------------------------------------------------------
+// bytes:byte[] --> bytesToIntOK() --> N
+//
+// Interpreta bytes como un entero sin signo.
     // -------------------------------------------------------------------------------
     public static int bytesToIntOK( byte[] bytes ) {
         if (bytes == null ) {
@@ -152,6 +177,9 @@ public class Utilidades {
     } // ()
 
     // -------------------------------------------------------------------------------
+// bytes:byte[] --> bytesToHexString() --> Text
+//
+// Convierte bytes en texto hexadecimal por byte.
     // -------------------------------------------------------------------------------
     public static String bytesToHexString( byte[] bytes ) {
 
@@ -168,7 +196,6 @@ public class Utilidades {
     } // ()
 } // class
 // -----------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------
+// Fin del fichero: Utilidades.java
 // -----------------------------------------------------------------------------------
 

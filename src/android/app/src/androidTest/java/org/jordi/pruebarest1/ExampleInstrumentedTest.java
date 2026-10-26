@@ -1,3 +1,15 @@
+// -----------------------------------------------------------------
+//
+// Fichero:     ExampleInstrumentedTest.java
+// Descripción: Prueba instrumentada de Android (se ejecuta en el dispositivo).
+// Copyright:   (c) 2026 David Ferra
+// Fecha:       2026-10-26
+// Autor:       David Ferra
+// Aportación: Se añadió la cabecera exigida por la lista de
+//             comprobación del revisor.
+//
+// -----------------------------------------------------------------
+
 package org.jordi.pruebarest1;
 
 import android.content.Context;

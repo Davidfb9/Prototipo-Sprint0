@@ -1,3 +1,15 @@
+// -----------------------------------------------------------------
+//
+// Fichero:     ExampleUnitTest.java
+// Descripción: Prueba unitaria local de Android (se ejecuta en el equipo).
+// Copyright:   (c) 2026 David Ferra
+// Fecha:       2026-10-26
+// Autor:       David Ferra
+// Aportación: Se añadió la cabecera exigida por la lista de
+//             comprobación del revisor.
+//
+// -----------------------------------------------------------------
+
 package org.jordi.pruebarest1;
 
 import org.junit.Test;

@@ -23,6 +23,7 @@
 // https://stackoverflow.com/questions/29246805/can-an-ibeacon-have-a-data-payload
 
 // --------------------------------------------------------------
+// Biblioteca BLE de la placa (nRF52840).
 // --------------------------------------------------------------
 #include <bluefruit.h>
 
@@ -30,11 +31,13 @@
 #undef max // colisionan con los de la biblioteca estándar
 
 // --------------------------------------------------------------
+// Utilidades de la placa: LED y puerto serie.
 // --------------------------------------------------------------
 #include "LED.h"
 #include "PuertoSerie.h"
 
 // --------------------------------------------------------------
+// Objetos globales de la primera parte: LED y puerto serie.
 // --------------------------------------------------------------
 namespace Globales {
   
@@ -46,6 +49,7 @@ namespace Globales {
 };
 
 // --------------------------------------------------------------
+// Emisora BLE, publicador de beacon y medidor del sensor.
 // --------------------------------------------------------------
 #include "EmisoraBLE.h"
 #include "Publicador.h"
@@ -53,6 +57,7 @@ namespace Globales {
 
 
 // --------------------------------------------------------------
+// Objetos globales de la segunda parte: emisora, publicador y medidor.
 // --------------------------------------------------------------
 namespace Globales {
 
@@ -63,6 +68,9 @@ namespace Globales {
 }; // namespace
 
 // --------------------------------------------------------------
+// inicializarPlaquita() --> void
+//
+// Punto de arranque de la placa.
 // --------------------------------------------------------------
 void inicializarPlaquita () {
 
@@ -107,6 +115,9 @@ void setup() {
 } // setup ()
 
 // --------------------------------------------------------------
+// lucecitas() --> void
+//
+// Secuencia de luces que indica el estado de la placa.
 // --------------------------------------------------------------
 inline void lucecitas() {
   using namespace Globales;
@@ -196,6 +207,5 @@ void loop () {
   
 } // loop ()
 // --------------------------------------------------------------
-// --------------------------------------------------------------
-// --------------------------------------------------------------
+// Fin del fichero: HolaMundoIBeacon.ino
 // --------------------------------------------------------------
